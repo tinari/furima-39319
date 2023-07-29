@@ -10,12 +10,12 @@
 | family_name        | string  | null: false               |
 | kana_name          | string  | null: false               |
 | kana_family_name   | string  | null: false               |
-| date               | integer | null: false               |
+| birthday           | date    | null: false               |
 
 ### Association
-  has_many :item
-  has_many :order
-  has_one  :buy
+  has_many :items
+  has_many :orders
+
 
 
 ## items テーブル
@@ -34,29 +34,32 @@
 ### Association
   belongs_to :user
   has_one    :order
-  has_one    :buy
 
 
 ## orders テーブル
-| Column        | Type      | Options     |
-| ------------- | --------- | ----------- |
-| address       | string    | null: false |
-| region_id     | string    | null: false | 
-| municipality  | string    | null: false |
-| house_number  | string    | null: false |
-| building_name | string    |             |
-| tel           | string    | null: false |
+| Column        | Type      | Options                        |
+| ------------- | --------- | ------------------------------ |
+| address       | string    | null: false                    |
+| region_id     | string    | null: false                    | 
+| municipality  | string    | null: false                    |
+| house_number  | string    | null: false                    |
+| building_name | string    |                                |
+| tel           | string    | null: false                    |
+| user          | reference | null: false, foreign_key: true |
+| item          | reference | null: false, foreign_key: true | 
 
 
 ### Association
   belongs_to :user
   belongs_to :item
+  belongs_to :buy
 
 ## buys テーブル
-| Column        | Type      | Options     |
-| ------------- | --------- | ----------- |
-| user_id       | reference |             |
-| item_id       | reference |             |
+| Column     | Type      | Options                        |
+| ---------- | --------- | ------------------------------ |
+| user       | reference | null: false, foreign_key: true |
+| item       | reference | null: false, foreign_key: true |
 
 belongs_to :user
 belongs_to :item
+has_one    :order
