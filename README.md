@@ -7,44 +7,56 @@
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false               |
 | name               | string  | null: false               |
-| birthday           | integer | null: false               |
+| family_name        | string  | null: false               |
+| kana_name          | string  | null: false               |
+| kana_family_name   | string  | null: false               |
+| date               | integer | null: false               |
 
 ### Association
-  has_many :items
-  has_many :orders
+  has_many :item
+  has_many :order
+  has_one  :buy
 
 
 ## items テーブル
-| Column          | Type      | Options                        |
-| --------------- | --------- | ------------------------------ |
-| item            | string    | null: false                    |
-| price           | integer   | null: false                    |
-| user            | reference | null: false, foreign_key: true |
-| category        | string    | null: false                    |
-| situation       | text      | null: false                    |
-| delivery_charge | string    | null: false                    |
-| region          | string    | null: false                    |
-| shipment        | string    | null: false                    |
+| Column             | Type      | Options                        |
+| ------------------ | --------- | ------------------------------ |
+| item               | string    | null: false                    |
+| price              | integer   | null: false                    |
+| user               | reference | null: false, foreign_key: true |
+| content            | text      | null: false                    |
+| category_id        | string    | null: false                    |
+| situation_id       | string    | null: false                    |
+| delivery_charge_id | string    | null: false                    |
+| region_id          | string    | null: false                    |
+| shipment_id        | string    | null: false                    |
 
 ### Association
   belongs_to :user
-  has_one   :orders
+  has_one    :order
+  has_one    :buy
 
 
 ## orders テーブル
 | Column        | Type      | Options     |
 | ------------- | --------- | ----------- |
-| address       | integer   | null: false |
-| prefectures   | string    | null: false | 
+| address       | string    | null: false |
+| region_id     | string    | null: false | 
 | municipality  | string    | null: false |
 | house_number  | string    | null: false |
 | building_name | string    |             |
-| tel           | integer   | null: false |
-| user          | reference | foreign_key |
-| item          | reference | foreign_key |
+| tel           | string    | null: false |
 
 
 ### Association
-  belongs_to :users
-  belongs_to :orders
+  belongs_to :user
+  belongs_to :item
 
+## buys テーブル
+| Column        | Type      | Options     |
+| ------------- | --------- | ----------- |
+| user_id       | reference |             |
+| item_id       | reference |             |
+
+belongs_to :user
+belongs_to :item
