@@ -19,17 +19,17 @@
 
 
 ## items テーブル
-| Column             | Type      | Options                        |
-| ------------------ | --------- | ------------------------------ |
-| item               | string    | null: false                    |
-| price              | integer   | null: false                    |
-| user               | reference | null: false, foreign_key: true |
-| content            | text      | null: false                    |
-| category_id        | string    | null: false                    |
-| situation_id       | string    | null: false                    |
-| delivery_charge_id | string    | null: false                    |
-| region_id          | string    | null: false                    |
-| shipment_id        | string    | null: false                    |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| item               | string     | null: false                    |
+| price              | integer    | null: false                    |
+| user               | reference  | null: false, foreign_key: true |
+| content            | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| situation_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| region_id          | integer    | null: false                    |
+| shipment_id        | integer    | null: false                    |
 
 ### Association
   belongs_to :user
@@ -37,24 +37,26 @@
 
 
 ## orders テーブル
-| Column        | Type      | Options                        |
-| ------------- | --------- | ------------------------------ |
-| address       | string    | null: false                    |
-| region_id     | string    | null: false                    | 
-| municipality  | string    | null: false                    |
-| house_number  | string    | null: false                    |
-| building_name | string    |                                |
-| tel           | string    | null: false                    |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| address       | string     | null: false                    |
+| region_id     | string     | null: false                    | 
+| municipality  | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building_name | string     |                                |
+| tel           | string     | null: false                    |
+| buy           | references | null: false, foreign_key: true |
+
 
 ### Association
   belongs_to :buy
 
 
 ## buys テーブル
-| Column     | Type      | Options                        |
-| ---------- | --------- | ------------------------------ |
-| user       | reference | null: false, foreign_key: true |
-| item       | reference | null: false, foreign_key: true |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
 belongs_to :user
 belongs_to :item
