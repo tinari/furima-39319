@@ -2,16 +2,13 @@ class UsersController < ApplicationController
 
 
   def create
-    @user= User.new
-
+    @user= User.new(user_params)
     if @user.save
       # 保存に成功した場合の処理
-      redirect_to root_path
+      redirect_to root_path 
     else
       # 保存に失敗した場合の処
-      flash.now[:alert]="error"
-      render :new, status: :unprocessable_entitiy 
-      
+      render :new     
       # render :error
     end
   end
