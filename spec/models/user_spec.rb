@@ -51,6 +51,28 @@ context "新規登録できない場合" do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
     end
+    it "passwordとpassword_confirmationが一致していないと登録できない" do
+      @user.password_confirmation=''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
+    it "passwordが英字のみでは登録できない" do   
+      @user.password= 'abcdefg'
+      @user.password_confirmation= @user.password
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
+    it "passwordが数字のみでは登録できない" do
+      @user.password= '1234567'
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password is invalid")  
+    end
+    it "passwordが全角では登録できない" do
+      @user.password= "ああああああ"
+      @user.password_confirmation= @user.password
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
     it "nameが空だと登録できない" do
       @user.name=''
       @user.valid?
@@ -71,22 +93,28 @@ context "新規登録できない場合" do
       @user.valid?
       expect(@user.errors.full_messages).to include("Kana family name can't be blank")
     end
+    it "birthdayが空だと登録できない" do
+      @user.birthday=''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birthday can't be blank")
+    end
+   
     it "kana_nameが全角カタカナでないと登録できない" do
      @user.kana_name= "カタカナ"
      @user.valid?
       expect(@user.errors.full_messages).not_to include("Full_width characters")
     end
-    it "kana_family_nameが全角カタカナで登録する" do
+    it "kana_family_nameが全角カタカナでないと登録できない" do
       @user.kana_family_name= "カタカナ"
       @user.valid?
       expect(@user.errors.full_messages).not_to include("Full_width characters")
       end
-      it "nameが全角で登録する" do
+      it "nameが全角でないと登録できない" do
       @user.name= "全角"
       @user.valid?
       expect(@user.errors.full_messages).not_to include("Full-width characters")
      end
-     it "family_nameが全角で登録する" do
+     it "family_nameが全角でないと登録できない" do
     @user.family_name= "全角"
     @user.valid?
     expect(@user.errors.full_messages).not_to include("Full-width characters")
