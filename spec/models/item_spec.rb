@@ -39,13 +39,28 @@ end
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
+    it 'カテゴリーに1が選択してある場合、商品を出品できない' do
+      @item.category_id= 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category can't be blank")
+    end
     it '商品の状態が空白では、商品を出品できない' do
       @item.situation_id=''
       @item.valid?
       expect(@item.errors.full_messages).to include("Situation can't be blank")  
     end
+    it '商品の状態に1が選択してある場合、商品を出品できない' do
+      @item.situation_id=1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Situation can't be blank")  
+    end 
     it '配送料の負担が空白では、商品を出品できない' do
       @item.delivery_charge_id=''
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
+    end
+    it '配送料の負担に1が選択してある場合、商品を出品できない' do
+      @item.delivery_charge_id=1
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
     end
@@ -54,8 +69,18 @@ end
       @item.valid?
       expect(@item.errors.full_messages).to include("Region can't be blank")
     end
+    it '発送元の地域に1が選択してある場合、商品を出品できない' do
+      @item.region_id=1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Region can't be blank")
+    end
     it '発送までの日数が空白では、商品を出品できない' do
       @item.shipment_id=''
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shipment can't be blank")
+    end
+    it '発送までの日数に1が選択してある場合、商品を出品できない' do
+      @item.shipment_id=1
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipment can't be blank")
     end
