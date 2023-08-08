@@ -21,11 +21,6 @@ class Item < ApplicationRecord
   validates :region_id,           null: false, numericality: { other_than: 1,message: "can't be blank"}                 
   validates :shipment_id,         null: false, numericality: { other_than: 1,message: "can't be blank"}
 
-  def sold_out?
-    sold_out?
-    self.sold_out_status == true
-  end
-
 
 
 end
