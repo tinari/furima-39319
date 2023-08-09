@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
 
  resources :articles
- resources :items, only: [:new, :create]
+ resources :items, only: [:new, :create, :show]
  resources :users, only: [:new, :create]
 end
