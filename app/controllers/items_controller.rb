@@ -18,10 +18,9 @@ class ItemsController < ApplicationController
         redirect_to root_path 
       else
         render :new, locals: { item: @item }
-        
-
       end
-    end
+  
+  end
 
   def show
     @item= Item.find(params[:id])
@@ -39,6 +38,7 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
 
 
   private
@@ -52,5 +52,4 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to root_path unless user_signed_in?
   end
- end
 end
