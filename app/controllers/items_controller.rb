@@ -1,3 +1,4 @@
+
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :move_to_index, except: [:index, :show]
@@ -13,7 +14,7 @@ class ItemsController < ApplicationController
   def create
       @item= Item.new(item_params)
       @item.image.attach(params[:item][:image]) if params[:item][:image]
-      if @item.save
+      if @item.update
         redirect_to root_path 
       else
         render :new, locals: { item: @item }
@@ -26,6 +27,18 @@ class ItemsController < ApplicationController
     @item= Item.find(params[:id])
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+  
+  def update
+    @item = Item.find(params[:id])
+    
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit
+    end
 
 
   private
@@ -39,4 +52,5 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to root_path unless user_signed_in?
   end
+ end
 end

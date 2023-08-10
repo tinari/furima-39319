@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
 
  resources :articles
+<<<<<<< Updated upstream
  resources :items, only: [:new, :create, :show]
+=======
+ resources :items, only: [:new, :create, :show, :edit, :update]
+>>>>>>> Stashed changes
  resources :users, only: [:new, :create]
 end
