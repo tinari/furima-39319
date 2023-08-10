@@ -14,12 +14,14 @@ class ItemsController < ApplicationController
   def create
       @item= Item.new(item_params)
       @item.image.attach(params[:item][:image]) if params[:item][:image]
-      if @item.save
+      if @item.update
         redirect_to root_path 
       else
         render :new, locals: { item: @item }
+        
+
       end
-  end
+    end
 
   def show
     @item= Item.find(params[:id])
@@ -27,12 +29,6 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    if current_user && @item.user && current_user.id == @item.user.id
-      
-    else
-      redirect_to root_path
-    end
-
   end
   
   def update
@@ -43,7 +39,7 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-  end
+
 
   private
 
@@ -57,3 +53,4 @@ class ItemsController < ApplicationController
     redirect_to root_path unless user_signed_in?
   end
  end
+end
