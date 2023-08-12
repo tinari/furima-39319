@@ -29,7 +29,6 @@ class ItemsController < ApplicationController
 
   def edit
       render :edit
-    end
   end
   
   def update
