@@ -65,4 +65,5 @@ class ItemsController < ApplicationController
     unless current_user && @item.user == current_user
       redirect_to root_path
     end
+  end
 end
