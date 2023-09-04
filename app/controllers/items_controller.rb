@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     @items= Item.all.order(created_at: :desc)
+
   end
 
   def new
@@ -20,15 +21,19 @@ class ItemsController < ApplicationController
         redirect_to root_path 
       else
         render :new, locals: { item: @item }
-      end
-  
+      end 
   end
 
   def show
   end
 
+
   def edit
+    if current_user && current_user.id == @item.user_id && @item.buy.present?
+      redirect_to root_path
+    else
       render :edit
+    end
   end
   
   def update
@@ -43,6 +48,7 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to root_path
   end
+
 
 
   private
