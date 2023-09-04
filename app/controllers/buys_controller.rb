@@ -4,6 +4,9 @@ class BuysController < ApplicationController
   def index
     @pay= Pay.new
     @item= Item.find(params[:item_id])
+    if current_user && @item.buy.present?
+      redirect_to root_path
+    end      
   end
 
   def create
