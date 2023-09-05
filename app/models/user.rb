@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :buys 
-  has_one :caard, dependent: :destroy 
   
          validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
          validates :name, :family_name, format: { with: /\A[ぁ-んァ-ン一-龥々ー]/}

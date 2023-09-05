@@ -19,6 +19,16 @@ RSpec.describe Pay, type: :model do
   end
   
   context '商品を購入できない場合' do
+    it 'user_idが空白の場合、購入できない' do
+      @pay.user_id= ''
+      @pay.valid?
+      expect(@pay.errors.full_messages).to include("User can't be blank")
+    end
+    it 'item_idが空白の場合、購入できない' do
+      @pay.item_id=''
+      @pay.valid?
+      expect(@pay.errors.full_messages).to include("Item can't be blank")
+    end
     it 'addressが空白の場合、購入できない' do
       @pay.address= ''
       @pay.valid?
