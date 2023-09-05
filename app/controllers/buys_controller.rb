@@ -3,10 +3,7 @@ class BuysController < ApplicationController
 
   def index
     @pay= Pay.new
-    @item= Item.find(params[:item_id])
-    if current_user && @item.buy.present?
-      redirect_to root_path
-    end      
+    non_purchased_item     
   end
 
   def create
@@ -34,10 +31,13 @@ end
       currency: 'jpy'
     )
   end
+
   def non_purchased_item
     # itemがあっての、order_form（入れ子構造）。他のコントローラーで生成されたitemを使うにはcreateアクションに定義する。
     @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user.id == @item.user_id || @item.buy.present?
+    if current_user && @item.buy.present?
+      redirect_to root_path
+    end
   end
 
 end

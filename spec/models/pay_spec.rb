@@ -3,12 +3,11 @@ require 'rails_helper'
 RSpec.describe Pay, type: :model do
   describe '商品購入機能' do
     before do
-  
       @pay = FactoryBot.build(:pay)
     end
   
       context '商品を購入できる場合' do
-        it 'item_id,user_id,address, region_id,municipality,
+        it 'user_id,item_id,address, region_id,municipality,
         house_number,tel,tokenが存在すれば購入できる' do
         expect(@pay).to be_valid 
       end
