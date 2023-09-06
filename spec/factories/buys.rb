@@ -6,8 +6,8 @@ FactoryBot.define do
     association :order
 
 
-    item_id { 15 }
+    
     user_id { 9 }
-
+    item_id { 15 }
   end
 end

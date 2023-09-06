@@ -20,7 +20,7 @@ class BuysController < ApplicationController
 
 private
 def buy_params
-      params.require(:pay).permit(:address,:region_id,:municipality,:house_number,:building_name,:tel).merge(item_id: params[:item_id], user_id: current_user.id, token: params[:token])
+      params.require(:pay).permit(:address,:region_id,:municipality,:house_number,:building_name,:tel).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
 end
   def card_item
     Payjp.api_key= ENV['PAYJP_SECRET_KEY']

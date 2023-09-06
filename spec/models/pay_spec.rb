@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe Pay, type: :model do
   describe '商品購入機能' do
     before do
-      @pay = FactoryBot.build(:pay)
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      @pay = FactoryBot.build(:pay, user_id: user.id, item_id: item.id)
     end
   
       context '商品を購入できる場合' do
