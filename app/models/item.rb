@@ -1,15 +1,14 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
- # has_one    :buy
+  has_one    :buy
+
   has_one_attached :image
   belongs_to_active_hash :genre, foreign_key: :category_id
   belongs_to_active_hash :situation, foreign_key: :situation_id
   belongs_to_active_hash :delivery, foreign_key: :delivery_charge_id
   belongs_to_active_hash :region, foreign_key: :region_id
   belongs_to_active_hash :shipment, foreign_key: :shipment_id
-
-
 
   validates :item,                null: false, presence: true
   validates :image,               null: false, presence: true
@@ -18,11 +17,8 @@ class Item < ApplicationRecord
   validates :category_id,         null: false, numericality: { other_than: 1,message: "can't be blank"}                    
   validates :situation_id,        null: false, numericality: { other_than: 1,message: "can't be blank"}                   
   validates :delivery_charge_id,  null: false, numericality: { other_than: 1,message: "can't be blank"}                 
-  validates :region_id,           null: false, numericality: { other_than: 1,message: "can't be blank"}                 
+  validates :region_id,           numericality: { other_than: 1,message: "can't be blank"}                 
   validates :shipment_id,         null: false, numericality: { other_than: 1,message: "can't be blank"}
-
-
-
 end
 
 
