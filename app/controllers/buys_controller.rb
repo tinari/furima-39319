@@ -1,5 +1,6 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create]
 
   def index
     @pay= Pay.new
@@ -13,7 +14,6 @@ class BuysController < ApplicationController
       @pay.save
       redirect_to root_path
     else
-      @item= Item.find(params[:item_id])
       render :index
     end
   end
@@ -24,7 +24,6 @@ def buy_params
 end
   def card_item
     Payjp.api_key= ENV['PAYJP_SECRET_KEY']
-    @item= Item.find(params[:item_id]) 
     Payjp::Charge.create(
       amount: @item.price,
       card: buy_params[:token],
@@ -34,10 +33,12 @@ end
 
   def non_purchased_item
     # itemがあっての、order_form（入れ子構造）。他のコントローラーで生成されたitemを使うにはcreateアクションに定義する。
-    @item = Item.find(params[:item_id])
-    if current_user && @item.buy.present?
+    if current_user && @item.buy.present? && current_user != @item.user
       redirect_to root_path
     end
   end
 
+  def set_item
+  @item = Item.find(params[:item_id])
+ end
 end
