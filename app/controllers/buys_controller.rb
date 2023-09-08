@@ -33,7 +33,7 @@ end
 
   def non_purchased_item
     # itemがあっての、order_form（入れ子構造）。他のコントローラーで生成されたitemを使うにはcreateアクションに定義する。
-    if current_user && @item.buy.present? && current_user != @item.user
+    if current_user && @item.buy.present? && current_user == @item.user
       redirect_to root_path
     end
   end
