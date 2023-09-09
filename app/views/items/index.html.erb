@@ -128,24 +128,27 @@
     </div>
     <ul class='item-lists'>
 
-     
-      <% @items.each do |item| %>
-      <li class='list'>
-        <%= link_to item_path(item.id) do %>
-        <div class='item-img-content'>
-          <%= image_tag item.image, class: "item-img" %>
+   <% @items.each do |item| %>
+     <li class='list'>
+      <%= link_to item_path(item.id) do %>
+       <div class='item-img-content'>
+        <% if item.images.attached? %>
+         <% item.images.each do |image| %>
+         <%= image_tag item.images.first, class: "item-img" %>
+         <% end %>
+        <% else %>
+        <% end %>
        
-          <% if item.buy.present? %>   
+         <% if item.buy.present? %>   
           <div class='sold-out'>
             <span>Sold Out!!</span>         
           </div>
-          <% end %>
-
-        </div>
+         <% end %>
+       </div>
         <div class='item-info'>
-          <h3 class='item-name'>
-            <%= item.item %>
-          </h3>
+         <h3 class='item-name'>
+         <%= item.item %>
+         </h3>
           <div class='item-price'>
             <span><%= item.price %>円<br><%= delivery_charge_text(item.delivery_charge_id) %></span>
             <div class='star-btn'>
@@ -153,10 +156,10 @@
               <span class='star-count'>0</span>
             </div>
           </div>
-        </div>
-        <% end %>
-      </li>
+       </div>
       <% end %>
+     </li>
+    <% end %>
      
 
       <li class='list'>

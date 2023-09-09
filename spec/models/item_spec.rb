@@ -6,12 +6,17 @@ RSpec.describe Item, type: :model do
   end
   describe '商品出品機能' do
     context '商品を出品できる場合' do
-      it 'item,image,user,:content, :price,:category_id, :situation_id, :delivery_charge_id,  
+      it 'item,images,user,:content, :price,:category_id, :situation_id, :delivery_charge_id,  
       :region_id, :shipment_idが存在すれば登録できる' do
       expect(@item).to be_valid
     end
+    it 'imagesが一枚でも商品を出品できる' do
+      item = FactoryBot.create(:item)
+      expect(@item).to be_valid
+    end
   end
-end
+  end
+
 
   context '商品を出品できない場合' do
     it "ログアウト状態では、商品を出品できずにログインページに遷移する" do
@@ -20,9 +25,9 @@ end
       expect(@item.errors.full_messages).to include("User must exist")
     end
     it '商品画像がない状態では、商品を出品できない' do
-      @item.image= nil
+      @item.images= nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Image can't be blank")
+      expect(@item.errors.full_messages).to include("Images can't be blank")
     end
     it '商品名が空白では、商品を出品できない' do
       @item.item= ''

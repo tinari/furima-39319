@@ -6,6 +6,6 @@ class Article < ApplicationRecord
   belongs_to :region
   belongs_to :shipment
 
-  validates :item, :user, :image, :price, :content, presence: true
+  validates :item, :user, :images, :price, :content, presence: true
   validates :category_id, :situation_id, :delivery_charge_id, :region_id, :shipment_id, null: false, numericality: { other_than: 1 , message: "can't be blank"}
 end
