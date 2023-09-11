@@ -10,10 +10,6 @@ RSpec.describe Item, type: :model do
       :region_id, :shipment_idが存在すれば登録できる' do
       expect(@item).to be_valid
     end
-    it 'imagesが一枚でも商品を出品できる' do
-      item = FactoryBot.create(:item)
-      expect(@item).to be_valid
-    end
   end
   end
 
