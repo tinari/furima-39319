@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
 
   def create
       @item= Item.new(item_params)
-      @item.image.attach(params[:item][:image]) if params[:item][:image]
+      @item.images.attach(params[:item][:images]) if params[:item][:images]
       if @item.save
         redirect_to root_path 
       else
@@ -54,9 +54,9 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:item, :image, :content, :price, 
+    params.require(:item).permit(:item, :content, :price, 
                                  :category_id, :situation_id, :delivery_charge_id,  
-                                 :region_id, :shipment_id).merge(user_id: current_user.id)
+                                 :region_id, :shipment_id, images: []).merge(user_id: current_user.id)
   end
 
   def move_to_index
