@@ -133,8 +133,8 @@
       <%= link_to item_path(item.id) do %>
        <div class='item-img-content'>
         <% if item.images.attached? %>
-
-         <%= image_tag item.images.first, class: "item-img" %>
+         <% item.images.each do |image| %>
+         <%= image_tag item.images, class: "item-img" %>
          <% end %>
         <% else %>
         <% end %>
