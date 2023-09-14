@@ -132,8 +132,10 @@
      <li class='list'>
     <%= link_to item_path(item.id) do %>
       <div class='item-img-content'>
-
-         <%= image_tag item.images[0], class: "item-img" %><br>
+   <% if item.images[0] %>
+    <%= image_tag item.images[0], class: "item-img" %><br>
+       <% end %>
+  
          <% end %>
         
        

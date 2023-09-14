@@ -7,24 +7,21 @@
       <%= @item.item %>
     </h2>
     <div class="item-img-content">
-    <% if @item.images.attached? %>
-    <% @item.images.each do |image| %>
      <%= image_tag @item.images[0],class:"item-box-img" %><br>
      <div class="other-images">
      <% @item.images[1..-1].each do |image| %>
      <div class="other-mage">
      <%= image_tag image %>
      </div>
-     <% end %>
      </div>
       <% if @item.buy.present? %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-      <% end %>
-
-      
+      <% end %>  
+      <% end %> 
     </div>
+
     <div class="item-price-box">
       <span class="item-price">
       ¥<%=@item.price %>
