@@ -132,11 +132,10 @@
      <li class='list'>
     <%= link_to item_path(item.id) do %>
       <div class='item-img-content'>
-       <% if item.images.attached? %>
-         <% item.images.each do |image| %>
+
          <%= image_tag item.images[0], class: "item-img" %><br>
          <% end %>
-        <% end %>
+        
        
          <% if item.buy.present? %>   
           <div class='sold-out'>
@@ -157,7 +156,7 @@
             </div>
           </div>
        </div>
-    <% end %>
+  
      </li>
   <% end %>
      
