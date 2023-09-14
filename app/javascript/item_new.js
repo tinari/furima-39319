@@ -59,9 +59,9 @@ const buildNewFileField = () => {
 
 // 指定したdata-indexを持つプレビューとfile_fieldを削除する
 const deleteImage = (dataIndex) => {
-  const deletePreviewImage = document.querySelector('.preview[data-index="${dataIndex}"]');
+  const deletePreviewImage = document.querySelector(`.preview[data-index="${dataIndex}"]`);
   deletePreviewImage.remove();
-  const deleteFileField = document.querySelector('input[type="file"][data-index="${dataIndex}"]');
+  const deleteFileField = document.querySelector(`input[type="file"][data-index="${dataIndex}"]`);
   deleteFileField.remove();
 
   // 画像の枚数が最大のときに削除ボタンを押した場合、file_fieldを1つ追加する
