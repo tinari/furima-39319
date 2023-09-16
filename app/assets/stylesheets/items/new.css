@@ -255,3 +255,8 @@
   cursor: pointer;
   margin-bottom: 5px;
 }
+
+.preview-image{
+  height: 120px; /* 自動の高さを保持する */
+  width: 120px;  /* 自動の幅を保持する */
+}
