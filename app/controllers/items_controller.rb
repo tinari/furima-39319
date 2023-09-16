@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
       @item= Item.new(item_params)
       @item.images.attach(params[:item][:images]) if params[:item][:images]
       if @item.save
-        redirect_to root_path 
+       redirect_to root_path 
       else
         render :new, locals: { item: @item }
       end 
