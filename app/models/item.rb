@@ -14,11 +14,11 @@ class Item < ApplicationRecord
   validates :images,              null: false, presence: true, length: {minimum: 1,maximum: 5, message: "は1枚以上5枚以下にしてください"}
   validates :price,               null: false, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   validates :content,             null: false, presence: true                    
-  validates :category_id,         null: false, numericality: { other_than: 1,message: "can't be blank"}                    
-  validates :situation_id,        null: false, numericality: { other_than: 1,message: "can't be blank"}                   
-  validates :delivery_charge_id,  null: false, numericality: { other_than: 1,message: "can't be blank"}                 
-  validates :region_id,           numericality: { other_than: 1,message: "can't be blank"}                 
-  validates :shipment_id,         null: false, numericality: { other_than: 1,message: "can't be blank"}
+  validates :category_id,         null: false, numericality: { other_than: 1,message: "を入力してください"}                    
+  validates :situation_id,        null: false, numericality: { other_than: 1,message: "を入力してください"}                   
+  validates :delivery_charge_id,  null: false, numericality: { other_than: 1,message: "を入力してください"}                 
+  validates :region_id,           numericality: { other_than: 1,message: "を入力してください"}                 
+  validates :shipment_id,         null: false, numericality: { other_than: 1,message: "を入力してください"}
 end
 
 

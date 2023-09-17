@@ -1,0 +1,42 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        name: 名前
+        family_name: 名字
+        kana_name: カナ名
+        kana_family_name: カナ名字
+        birthday: 生年月日
+        
+      item:
+        user: ユーザー
+        item: 商品名
+        images: 画像
+        content: 商品の説明
+        price: 価格
+  activehash:
+  attributes:      
+        category_id: カテゴリー
+        blank: "カテゴリーを入力してください"
+        situation_id: 商品の状態
+        delivery_charge_id: 配送料の負担
+        region_id: 発送元の地域
+        shipment_id: 発送までの日数
+  activemodel: 
+   attributes:
+      pay:
+        user_id: ユーザー
+        item_id: 商品
+        images: 画像
+        address: 郵便番号
+        region_id: 都道府県
+        municipality: 市区町村
+        house_number: 番地
+        building_name: 建物名
+        tel: 電話番号
+        number-form: カード情報
+        expiry-form: 有効期限
+        cvc-form: セキュリティコード
+        token: クレジットカード情報
+      
