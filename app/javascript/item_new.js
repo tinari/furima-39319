@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
   if (!itemForm) return null;
 
    // 投稿できる枚数の制限を定義
-   const imageLimits = 5;
+   const imageLimits = 3;
 
 // プレビュー画像を生成・表示する関数
 const buildPreviewImage = (dataIndex, blob) =>{

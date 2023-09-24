@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipment, foreign_key: :shipment_id
 
   validates :item,                null: false, presence: true
-  validates :images,              null: false, presence: true, length: {minimum: 1,maximum: 5, message: "は1枚以上5枚以下にしてください"}
+  validates :images,              null: false, presence: true, length: {minimum: 1,maximum: 3, message: "は1枚以上3枚以下にしてください"}
   validates :price,               null: false, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   validates :content,             null: false, presence: true                    
   validates :category_id,         null: false, numericality: { other_than: 1,message: "を入力してください"}                    
