@@ -210,12 +210,12 @@
 
 .other-images {
   display: flex;
+
+
 }
 
 .other-image {
   margin-right: 10px;
-  height: 100px;
-  width: 100px;
 }
 
 .main-image {
@@ -223,3 +223,8 @@
   width: 200px;
 }
 
+img{
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
