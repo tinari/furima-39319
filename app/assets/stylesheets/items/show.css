@@ -210,6 +210,8 @@
 
 .other-images {
   display: flex;
+  height: 60px;
+  width: 60px;
 
 
 }
@@ -223,8 +225,3 @@
   width: 200px;
 }
 
-img{
-  height: 100px;
-  width: 100px;
-  object-fit: contain;
-}
